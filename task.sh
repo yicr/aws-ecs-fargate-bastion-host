@@ -223,7 +223,7 @@ case "${1:-}" in
 
     runningTaskArn=`getRunningTaskArn`
 
-    if [[ -n $runningTaskArn ]]; then
+    if [[ -n $runningTaskArn && $runningTaskArn != null ]]; then
       echo -e "TaskArn: ${runningTaskArn}"
       echo -e "stop task..."
 
@@ -231,7 +231,7 @@ case "${1:-}" in
 
       echo -e "TaskDefinitionArn : ${taskDefinitionArn}"
 
-      doWaitStopTask taskDefinitionArn
+      doWaitStopTask $runningTaskArn
 
       echo -e "stop task finished."
     else
