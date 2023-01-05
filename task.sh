@@ -163,7 +163,7 @@ case "${1:-}" in
     runningTaskArn=`getRunningTaskArn`
 
     # when running task.
-    if [[ -n $runningTaskArn ]]; then
+    if [[ -n $runningTaskArn && $runningTaskArn != null ]]; then
       echo -e "Already running task."
       echo -e "TaskArn: ${runningTaskArn}"
       read -p "Login running task container? (ECSExec) [Y/n]: " ANS
